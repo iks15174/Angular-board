@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { SignService } from "src/app/service/rest-api/sign.service";
 
 @Component({
   selector: 'app-signin',
@@ -10,7 +11,7 @@ export class SigninComponent implements OnInit {
 
   signInForm: FormGroup; 
 
-  constructor() {
+  constructor(private signService: SignService) {
     this.signInForm = new FormGroup({
       id: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
@@ -29,6 +30,13 @@ export class SigninComponent implements OnInit {
   }
 
   submit(){
-    
+    if(this.signInForm.valid){
+      if(this.signService.singIn(this.signInForm.value.id, this.signInForm.value.password)){
+        alert("로그인 성공");
+      }
+      else{
+        alert("로그인 실패");
+      }
+    }
   }
 }

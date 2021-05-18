@@ -11,6 +11,7 @@ import { SigninComponent } from './component/member/signin/signin.component';
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import{ HttpClientModule } from "@angular/common/http";
+import { SignService } from "./service/rest-api/sign.service";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import{ HttpClientModule } from "@angular/common/http";
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    SignService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
