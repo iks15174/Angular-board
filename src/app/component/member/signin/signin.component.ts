@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { SignService } from "src/app/service/rest-api/sign.service";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-signin',
@@ -8,17 +9,24 @@ import { SignService } from "src/app/service/rest-api/sign.service";
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-
+  
+  redirectTo: string;
   signInForm: FormGroup; 
 
-  constructor(private signService: SignService) {
+  constructor(private signService: SignService,
+    private router: Router,
+    private route: ActivatedRoute) {
     this.signInForm = new FormGroup({
       id: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
-    })
+    });
+    this.redirectTo = "/";
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    this.route.queryParams.subscribe(params => {
+      this.redirectTo = params['redirectTo'];
+    });
   }
 
   get id(){
@@ -32,7 +40,7 @@ export class SigninComponent implements OnInit {
   submit(){
     if(this.signInForm.valid){
       if(this.signService.singIn(this.signInForm.value.id, this.signInForm.value.password)){
-        alert("로그인 성공");
+        this.router.navigate([this.redirectTo ? this.redirectTo : '/']);
       }
       else{
         alert("로그인 실패");

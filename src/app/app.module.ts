@@ -12,13 +12,15 @@ import { SigninComponent } from './component/member/signin/signin.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import{ HttpClientModule } from "@angular/common/http";
 import { SignService } from "./service/rest-api/sign.service";
+import { SignupComponent } from './component/member/signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SigninComponent,
-    //SignupComponent,
+    SignupComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
