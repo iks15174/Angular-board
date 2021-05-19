@@ -9,6 +9,7 @@ export class LogoutComponent{
 
   constructor(private router: Router) {
     localStorage.removeItem('logined');
+    localStorage.removeItem('loginId')
     this.router.navigate(['/'])
   }
 }

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { User } from "src/app/model/myinfo/User";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignService {
 
-  private userList: {id: string, password: string, name: string}[];
+  private userList: User[];
 
   constructor() {
     this.userList = JSON.parse(localStorage.getItem("userList") || "[]");
@@ -17,7 +18,8 @@ export class SignService {
   singIn(id: string, password: string): boolean{
     for(let i = 0; i < this.userList.length; i++){
       if(this.userList[i].id == id && this.userList[i].password == password){
-        localStorage.setItem("logined", "true")
+        localStorage.setItem("logined", "true");
+        localStorage.setItem("loginId", this.userList[i].id);
         return true;
       }
     }

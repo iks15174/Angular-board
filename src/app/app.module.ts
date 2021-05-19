@@ -14,6 +14,7 @@ import{ HttpClientModule } from "@angular/common/http";
 import { SignService } from "./service/rest-api/sign.service";
 import { SignupComponent } from './component/member/signup/signup.component';
 import { LogoutComponent } from './component/member/logout/logout.component';
+import { MyinfoComponent } from './component/member/myinfo/myinfo.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { LogoutComponent } from './component/member/logout/logout.component';
     SignupComponent,
     SignupComponent,
     LogoutComponent,
+    MyinfoComponent,
   ],
   imports: [
     BrowserModule,
