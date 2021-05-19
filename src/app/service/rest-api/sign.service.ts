@@ -1,4 +1,3 @@
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -10,7 +9,9 @@ export class SignService {
 
   constructor() {
     this.userList = JSON.parse(localStorage.getItem("userList") || "[]");
-    this.userList.push({id: "admin@naver.com", password: "1234", name: "jiho"});
+    if(this.userList.length == 0){
+      this.userList.push({id: "admin@naver.com", password: "1234", name: "jiho"});
+    }
   }
 
   singIn(id: string, password: string): boolean{
@@ -21,5 +22,17 @@ export class SignService {
       }
     }
     return false;
+  }
+
+  signUp(id: string, password: string, name: string): boolean{
+    try{
+      this.userList.push({id: id, password: password, name: name});
+      localStorage.setItem("userList", JSON.stringify(this.userList));
+      return true;
+    }
+    catch{
+      console.log("회원가입 실패");
+      return false;
+    }
   }
 }
