@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
       password: new FormControl("", [Validators.required]),
       password_re: new FormControl("", [Validators.required]),
       name: new FormControl("", [Validators.required])
-    }, { Validator: this.checkPassword});
+    }, { validator: this.checkPassword});
   }
 
   checkPassword(group: FormGroup){

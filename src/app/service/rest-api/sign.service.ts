@@ -35,4 +35,14 @@ export class SignService {
       return false;
     }
   }
+
+  isSignIn(): boolean{
+    const logined = JSON.parse(localStorage.getItem("logined") || "false");
+    if(logined){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 }
