@@ -12,6 +12,8 @@ import { SigninComponent } from './component/member/signin/signin.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import{ HttpClientModule } from "@angular/common/http";
 import { SignService } from "./service/rest-api/sign.service";
+import { UserlistService } from "./service/member/userlist.service";
+import { MyinfoService } from './service/rest-api/myinfo.service';
 import { SignupComponent } from './component/member/signup/signup.component';
 import { LogoutComponent } from './component/member/logout/logout.component';
 import { MyinfoComponent } from './component/member/myinfo/myinfo.component';
@@ -38,6 +40,8 @@ import { MyinfoComponent } from './component/member/myinfo/myinfo.component';
   ],
   providers: [
     SignService,
+    UserlistService,
+    MyinfoService
   ],
   bootstrap: [AppComponent]
 })
