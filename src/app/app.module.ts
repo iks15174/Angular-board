@@ -14,9 +14,12 @@ import{ HttpClientModule } from "@angular/common/http";
 import { SignService } from "./service/rest-api/sign.service";
 import { UserlistService } from "./service/member/userlist.service";
 import { MyinfoService } from './service/rest-api/myinfo.service';
+import { BoardService } from './service/rest-api/board.service';
 import { SignupComponent } from './component/member/signup/signup.component';
 import { LogoutComponent } from './component/member/logout/logout.component';
 import { MyinfoComponent } from './component/member/myinfo/myinfo.component';
+import { BoardComponent } from './component/board/board.component';
+import { AddpostComponent } from './component/board/addpost.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,8 @@ import { MyinfoComponent } from './component/member/myinfo/myinfo.component';
     SignupComponent,
     LogoutComponent,
     MyinfoComponent,
+    BoardComponent,
+    AddpostComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,8 @@ import { MyinfoComponent } from './component/member/myinfo/myinfo.component';
   providers: [
     SignService,
     UserlistService,
-    MyinfoService
+    MyinfoService,
+    BoardService
   ],
   bootstrap: [AppComponent]
 })
