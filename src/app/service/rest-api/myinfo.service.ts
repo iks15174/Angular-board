@@ -12,7 +12,8 @@ export class MyinfoService {
   ) { }
 
   getUser(): User{
-    const loginId = JSON.parse(localStorage.getItem("loginId") || " ");
+    const loginId = JSON.parse(localStorage.getItem("loginId") || '" "');
+    console.log(loginId);
     if(loginId !== " "){
       let userList = this.userlistService.userList;
       for(let i = 0; i < userList.length; i++){
