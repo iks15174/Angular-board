@@ -20,6 +20,7 @@ import { LogoutComponent } from './component/member/logout/logout.component';
 import { MyinfoComponent } from './component/member/myinfo/myinfo.component';
 import { BoardComponent } from './component/board/board.component';
 import { AddpostComponent } from './component/board/addpost.component';
+import { PostViewComponent } from './component/board/post-view.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AddpostComponent } from './component/board/addpost.component';
     MyinfoComponent,
     BoardComponent,
     AddpostComponent,
+    PostViewComponent,
   ],
   imports: [
     BrowserModule,

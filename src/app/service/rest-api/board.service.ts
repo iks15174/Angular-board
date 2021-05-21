@@ -38,4 +38,13 @@ export class BoardService {
     }
     return false;
   }
+
+  viewPost(postId: number): Post{
+    for(let i in this.postList){
+      if(this.postList[i].postId === postId){
+        return this.postList[i];
+      }
+    }
+    return {postId: -1, title: "", content: "", user: {id: "", password: "", name: ""}};
+  }
 }

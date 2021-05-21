@@ -13,15 +13,15 @@
                 <mat-table [dataSource]="posts">
                     <ng-container matColumnDef="postId">
                         <mat-header-cell *matHeaderCellDef>no.</mat-header-cell>
-                        <mat-cell *matCellDef="let element" class="column-center">{{element.postId}}</mat-cell>
+                        <mat-cell *matCellDef="let element" class="column-center" [routerLink]="['/board/post', element.postId]">{{element.postId}}</mat-cell>
                     </ng-container>
                     <ng-container matColumnDef="title">
                         <mat-header-cell *matHeaderCellDef>제목</mat-header-cell>
-                        <mat-cell *matCellDef="let element" class="column-center">{{element.title}}</mat-cell>
+                        <mat-cell *matCellDef="let element" class="column-center" [routerLink]="['/board/post', element.postId]">{{element.title}}</mat-cell>
                     </ng-container>
                     <ng-container matColumnDef="author">
                         <mat-header-cell *matHeaderCellDef>작성자</mat-header-cell>
-                        <mat-cell *matCellDef="let element" class="column-center">{{element.user.name}}</mat-cell>
+                        <mat-cell *matCellDef="let element" class="column-center" [routerLink]="['/board/post', element.postId]">{{element.user.name}}</mat-cell>
                     </ng-container>
                     <ng-container matColumnDef="modifiedAt">
                         <mat-header-cell *matHeaderCellDef>수정</mat-header-cell>
