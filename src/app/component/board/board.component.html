@@ -26,7 +26,7 @@
                     <ng-container matColumnDef="modifiedAt">
                         <mat-header-cell *matHeaderCellDef>수정</mat-header-cell>
                         <mat-cell *matCellDef="let element" class="column-center">
-                            <mat-icon class="icon">edit</mat-icon>
+                            <mat-icon class="icon" *ngIf="signService.isSignIn() && ">edit</mat-icon>
                             <mat-icon class="icon">delete_forever</mat-icon>
                         </mat-cell>
                     </ng-container>

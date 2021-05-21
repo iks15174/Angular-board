@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/model/board/Post';
 import { BoardService } from 'src/app/service/rest-api/board.service';
+import { MyinfoService } from 'src/app/service/rest-api/myinfo.service';
+import { SignService } from 'src/app/service/rest-api/sign.service';
+import { User } from 'src/app/model/myinfo/User';
 
 @Component({
   selector: 'app-board',
@@ -11,10 +14,17 @@ export class BoardComponent implements OnInit {
 
   posts: Post[] = [];
   headerColumns: string[] = ['postId', 'title', 'author', 'modifiedAt'];
+  loginUser: User;
 
-  constructor(private boardService: BoardService) { }
+  constructor(private boardService: BoardService,
+    private signService: SignService,
+    private myinfoService: MyinfoService
+    ) { }
 
   ngOnInit() {
     this.posts = this.boardService.getPosts();
+    if(this.signService.isSignIn()){
+      this.loginUser = this.myinfoService.getUser();
+    }
   }
 }

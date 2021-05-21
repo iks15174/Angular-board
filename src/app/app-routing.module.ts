@@ -8,6 +8,7 @@ import { MyinfoComponent } from './component/member/myinfo/myinfo.component';
 import { BoardComponent } from './component/board/board.component';
 import { AddpostComponent } from './component/board/addpost.component';
 import { PostViewComponent } from './component/board/post-view.component';
+import { PostModifyComponent } from './component/board/post-modify.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path : "board", component: BoardComponent},
   {path : "board/add", component: AddpostComponent, canActivate: [AuthGuard]},
   {path : "board/post/:postId", component: PostViewComponent},
+  {path : "board/post/:postId/modify", component: PostModifyComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

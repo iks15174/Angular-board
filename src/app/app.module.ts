@@ -21,6 +21,7 @@ import { MyinfoComponent } from './component/member/myinfo/myinfo.component';
 import { BoardComponent } from './component/board/board.component';
 import { AddpostComponent } from './component/board/addpost.component';
 import { PostViewComponent } from './component/board/post-view.component';
+import { PostModifyComponent } from './component/board/post-modify.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { PostViewComponent } from './component/board/post-view.component';
     BoardComponent,
     AddpostComponent,
     PostViewComponent,
+    PostModifyComponent,
   ],
   imports: [
     BrowserModule,

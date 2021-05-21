@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/model/board/Post';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { BoardService } from 'src/app/service/rest-api/board.service';
 
 @Component({
@@ -21,9 +21,6 @@ export class PostViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let postGet = this.boardService.viewPost(this.postId)
-    if(postGet.postId !== -1){
-      this.post = postGet;
-    }
+    this.post = this.boardService.viewPost(this.postId);
   }
 }
