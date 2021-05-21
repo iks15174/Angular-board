@@ -11,13 +11,17 @@ export class BoardService {
 
   constructor(
   ) { 
-    this.postList = [
-      {'postId':1, 'title': '테스트.', 'content': '개발을 위한 샘플 데이터', 'user': {id: "a", password: "b", name: "jiho"}}
-    ];
+    this.postList = JSON.parse(localStorage.getItem("postList") || "[]");
+    if(this.postList.length === 0){
+      this.postList = [
+        {'postId':1, 'title': '테스트.', 'content': '개발을 위한 샘플 데이터', 'user': {id: "a", password: "b", name: "jiho"}}
+      ];
+      localStorage.setItem("postList", JSON.stringify(this.postList));
+    }
   }
 
   getPosts(): Post[]{
-    return this.postList;
+    return JSON.parse(localStorage.getItem("postList") || "[]");
   }
 
   addPost(title: string, content: string, user: User): boolean{
@@ -29,6 +33,7 @@ export class BoardService {
         'user' : user
       };
       this.postList.push(newPost);
+      localStorage.setItem("postList", JSON.stringify(this.postList));
       return true;
     }
     return false;
