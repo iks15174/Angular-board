@@ -47,4 +47,15 @@ export class BoardService {
     }
     return {postId: -1, title: "", content: "", user: {id: "", password: "", name: ""}};
   }
+
+  modifyPost(post: Post): boolean{
+    for(let i in this.postList){
+      if(this.postList[i].postId === post.postId){
+        this.postList[i].title = post.title;
+        this.postList[i].content = post.content;
+        return true;
+      }
+    }
+    return false;
+  }
 }

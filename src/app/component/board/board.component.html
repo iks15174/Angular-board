@@ -26,7 +26,9 @@
                     <ng-container matColumnDef="modifiedAt">
                         <mat-header-cell *matHeaderCellDef>수정</mat-header-cell>
                         <mat-cell *matCellDef="let element" class="column-center">
-                            <mat-icon class="icon" *ngIf="signService.isSignIn() && ">edit</mat-icon>
+                            <mat-icon class="icon" 
+                            *ngIf="signService.isSignIn() && loginUser?.name == element?.user?.name" 
+                            [routerLink] = "['/board/post',element?.postId, 'modify']">edit</mat-icon>
                             <mat-icon class="icon">delete_forever</mat-icon>
                         </mat-cell>
                     </ng-container>

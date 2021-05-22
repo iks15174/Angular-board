@@ -17,7 +17,7 @@ export class BoardComponent implements OnInit {
   loginUser: User;
 
   constructor(private boardService: BoardService,
-    private signService: SignService,
+    public signService: SignService,
     private myinfoService: MyinfoService
     ) { }
 
