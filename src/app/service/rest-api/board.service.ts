@@ -14,7 +14,7 @@ export class BoardService {
     this.postList = JSON.parse(localStorage.getItem("postList") || "[]");
     if(this.postList.length === 0){
       this.postList = [
-        {'postId':1, 'title': '테스트.', 'content': '개발을 위한 샘플 데이터', 'user': {id: "a", password: "b", name: "jiho"}}
+        {'postId':1, 'title': '테스트.', 'content': '개발을 위한 샘플 데이터', 'user': {id: "admin@naver.com", password: "1234", name: "jiho"}}
       ];
       localStorage.setItem("postList", JSON.stringify(this.postList));
     }
@@ -53,6 +53,18 @@ export class BoardService {
       if(this.postList[i].postId === post.postId){
         this.postList[i].title = post.title;
         this.postList[i].content = post.content;
+        localStorage.setItem("postList", JSON.stringify(this.postList));
+        return true;
+      }
+    }
+    return false;
+  }
+
+  deletePost(postId: number, user: User): boolean{
+    for(let i in this.postList){
+      if(this.postList[i].postId === postId && this.postList[i].user.id === user.id){
+        this.postList.splice(Number(i), 1);
+        localStorage.setItem("postList", JSON.stringify(this.postList));
         return true;
       }
     }

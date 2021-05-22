@@ -23,6 +23,9 @@ export class SignService {
     return false;
   }
 
+  /*
+  회원가입 중복체크 로직 추가할것.
+   */
   signUp(id: string, password: string, name: string): boolean{
     if(this.userlistService.addUser({id: id, password: password, name: name})){
       return true;

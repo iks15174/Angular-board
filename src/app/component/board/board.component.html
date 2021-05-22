@@ -29,7 +29,10 @@
                             <mat-icon class="icon" 
                             *ngIf="signService.isSignIn() && loginUser?.name == element?.user?.name" 
                             [routerLink] = "['/board/post',element?.postId, 'modify']">edit</mat-icon>
-                            <mat-icon class="icon">delete_forever</mat-icon>
+                            <mat-icon 
+                            *ngIf="signService.isSignIn() && loginUser?.name == element?.user?.name"
+                            (click)="delete(element.postId)"
+                            class="icon">delete_forever</mat-icon>
                         </mat-cell>
                     </ng-container>
                     <mat-header-row *matHeaderRowDef="headerColumns"></mat-header-row>

@@ -27,4 +27,15 @@ export class BoardComponent implements OnInit {
       this.loginUser = this.myinfoService.getUser();
     }
   }
+
+  delete(postId: number){
+    if(confirm('정말 삭제하겠습니까?') && this.signService.isSignIn()){
+      if(this.boardService.deletePost(postId, this.loginUser)){
+        window.location.reload();
+      }
+      else{
+        alert('삭제 실패');
+      }
+    }
+  }
 }
