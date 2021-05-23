@@ -23,6 +23,9 @@ import { AddpostComponent } from './component/board/addpost.component';
 import { PostViewComponent } from './component/board/post-view.component';
 import { PostModifyComponent } from './component/board/post-modify.component';
 
+import * as echarts from 'echarts';
+import { NgxEchartsModule } from 'ngx-echarts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +48,10 @@ import { PostModifyComponent } from './component/board/post-modify.component';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxEchartsModule.forRoot({
+      echarts
+    }),
   ],
   providers: [
     SignService,
