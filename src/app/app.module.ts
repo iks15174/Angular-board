@@ -25,6 +25,7 @@ import { PostModifyComponent } from './component/board/post-modify.component';
 
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { PostUserComponent } from './component/graph/post-user/post-user.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
     AddpostComponent,
     PostViewComponent,
     PostModifyComponent,
+    PostUserComponent,
   ],
   imports: [
     BrowserModule,
