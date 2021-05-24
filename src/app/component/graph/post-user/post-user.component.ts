@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { EChartsOption } from 'echarts';
 import { UserlistService } from 'src/app/service/member/userlist.service';
 import { BoardService } from 'src/app/service/rest-api/board.service';
@@ -17,7 +17,7 @@ export class PostUserComponent implements OnInit, DoCheck {
     private userListService: UserlistService
   ) {
   }
-  
+
   ngOnInit(): void {
     console.log("ngOnInit");
   }
