@@ -6,6 +6,9 @@ import { User } from 'src/app/model/myinfo/User';
 })
 export class UserlistService {
 
+  private baseEmail = '@naver.com';
+  private basePsw = '1234';
+  private baseName = '지호';
   public userList: User[];
 
   constructor() {
@@ -25,5 +28,13 @@ export class UserlistService {
     this.userList.push(user);
     localStorage.setItem("userList", JSON.stringify(this.userList));
     return true;
+  }
+
+  addRandomUser(){
+    const id_num = this.userList.length;
+    const id = id_num + this.baseEmail;
+    const name = id_num + this.baseName;
+    this.userList.push({id: id, password: this.basePsw, name: name});
+    localStorage.setItem("userList", JSON.stringify(this.userList));
   }
 }

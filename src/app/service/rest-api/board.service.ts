@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Post } from 'src/app/model/board/Post';
 import { User } from 'src/app/model/myinfo/User';
+import { UserlistService } from '../member/userlist.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BoardService {
 
-  private postList: Post[];
+  public postList: Post[];
+  private baseTitle = "title";
+  private baseContent = "content";
+
 
   constructor(
+    private userlistService: UserlistService
   ) { 
     this.postList = JSON.parse(localStorage.getItem("postList") || "[]");
     if(this.postList.length === 0){
@@ -69,5 +74,16 @@ export class BoardService {
       }
     }
     return false;
+  }
+
+  addRandomPost() {
+    const id_num = this.postList[this.postList.length - 1].postId;
+    const title = id_num + this.baseTitle;
+    const content = id_num + this.baseContent;
+    const min = 0;
+    const max = this.userlistService.userList.length;
+    const index = Math.floor(Math.random() * (max - min)) + min;
+    this.postList.push({postId: id_num + 1, title: title, content: content, user: this.userlistService.userList[index]});
+    localStorage.setItem("postList", JSON.stringify(this.postList));
   }
 }

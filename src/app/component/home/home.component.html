@@ -1,1 +1,20 @@
-<p>home.component.html</p>
+<mat-grid-list cols="2" rowHeight="2:1" class="grid-layout-custom">
+    <mat-grid-tile>
+        <app-post-user></app-post-user>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <app-post-user></app-post-user>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <app-post-user></app-post-user>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <app-post-user></app-post-user>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <button mat-raised-button (click)="addRandomUser()">Add Random User</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <button mat-raised-button (click)="addRandomPost()">Add Random Post</button>
+    </mat-grid-tile>
+</mat-grid-list>
