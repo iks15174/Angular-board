@@ -27,6 +27,7 @@ import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { PostUserComponent } from './component/graph/post-user/post-user.component';
 import { UserPerPostComponent } from './component/graph/user-per-post/user-per-post.component';
+import { PostDateComponent } from './component/graph/post-date/post-date.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { UserPerPostComponent } from './component/graph/user-per-post/user-per-p
     PostModifyComponent,
     PostUserComponent,
     UserPerPostComponent,
+    PostDateComponent,
   ],
   imports: [
     BrowserModule,
