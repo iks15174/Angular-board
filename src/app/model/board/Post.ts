@@ -5,4 +5,6 @@ export interface Post{
     title: string;
     content: string;
     user: User;
+    watch?: number;
+    created?: Date;
 }
