@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Post } from 'src/app/model/board/Post';
 import { User } from 'src/app/model/myinfo/User';
@@ -25,8 +26,13 @@ export class BoardService {
     }
   }
 
-  getPosts(): Post[]{
-    return JSON.parse(localStorage.getItem("postList") || "[]");
+  getPosts(start: number, end: number): Post[]{
+    let temp: Post[] = JSON.parse(localStorage.getItem("postList") || "[]");
+    if((temp.length - 1) < end){
+      end = temp.length - 1;
+    }
+    return temp.slice(start, end + 1);
+
   }
 
   addPost(title: string, content: string, user: User): boolean{

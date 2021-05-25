@@ -1,5 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/model/board/Post';
 import { User } from 'src/app/model/myinfo/User';
 import { UserlistService } from 'src/app/service/member/userlist.service';
@@ -28,12 +27,10 @@ export class HomeComponent implements OnInit {
 
   addRandomUser(){
     this.userListService.addRandomUser();
-    console.log("add Random User");
   }
 
   addRandomPost(){
     this.boardService.addRandomPost();
-    console.log("add Random Post");
   }
 
 }

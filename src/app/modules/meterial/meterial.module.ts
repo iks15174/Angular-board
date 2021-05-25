@@ -12,6 +12,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatSliderModule } from "@angular/material/slider"; 
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatDialogModule,
     MatSliderModule,
     MatGridListModule,
+    MatPaginatorModule,
   ],
   exports: [
     MatCardModule,
@@ -40,6 +42,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatDialogModule,
     MatSliderModule,
     MatGridListModule,
+    MatPaginatorModule,
   ],
   declarations: []
 })
