@@ -3,6 +3,7 @@ import { EChartsOption } from 'echarts';
 import { UserlistService } from 'src/app/service/member/userlist.service';
 import { BoardService } from 'src/app/service/rest-api/board.service';
 
+
 @Component({
   selector: 'app-post-user',
   templateUrl: './post-user.component.html',
@@ -19,7 +20,6 @@ export class PostUserComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
-    console.log("ngOnInit");
   }
 
   ngDoCheck() {
@@ -37,5 +37,4 @@ export class PostUserComponent implements OnInit, DoCheck {
       }]
     }
   }
-
 }

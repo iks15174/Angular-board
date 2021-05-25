@@ -1,20 +1,41 @@
 <mat-grid-list cols="2" rowHeight="2:1" class="grid-layout-custom">
     <mat-grid-tile>
-        <app-post-user></app-post-user>
+        <div style="display: block;
+        width: 100%;
+        height: 100%;">
+            <app-post-user></app-post-user>
+        </div>
     </mat-grid-tile>
+
     <mat-grid-tile>
-        <app-user-per-post></app-user-per-post>
+        <div style="display: block;
+        width: 100%;
+        height: 100%;">
+            <app-user-per-post></app-user-per-post>
+        </div>
     </mat-grid-tile>
+
     <mat-grid-tile>
-        <app-post-user></app-post-user>
+        <div style="display: block;
+        width: 100%;
+        height: 100%;">
+            <app-post-user></app-post-user>
+        </div>
     </mat-grid-tile>
+
     <mat-grid-tile>
-        <app-post-user></app-post-user>
+        <div style="display: block;
+        width: 100%;
+        height: 100%;">
+            <app-post-user></app-post-user>
+        </div>
     </mat-grid-tile>
+
     <mat-grid-tile>
         <button mat-raised-button (click)="addRandomUser()">Add Random User</button>
     </mat-grid-tile>
     <mat-grid-tile>
         <button mat-raised-button (click)="addRandomPost()">Add Random Post</button>
     </mat-grid-tile>
+
 </mat-grid-list>
