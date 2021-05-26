@@ -1,7 +1,4 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { EChartsOption } from 'echarts';
-import { UserlistService } from 'src/app/service/member/userlist.service';
-import { BoardService } from 'src/app/service/rest-api/board.service';
 
 @Component({
   selector: 'app-post-date',
@@ -13,8 +10,6 @@ export class PostDateComponent implements OnInit, DoCheck {
   option: any;
 
   constructor(
-    private boardService: BoardService,
-    private userListService: UserlistService
   ) { }
 
   ngOnInit(): void {
@@ -55,7 +50,6 @@ export class PostDateComponent implements OnInit, DoCheck {
 
   makeData(){
     const postList = JSON.parse(localStorage.getItem("postList") || "[]");
-    console.log(postList);
     let result = [];
     let returnResult = [];
     for(let i in postList){
@@ -90,7 +84,6 @@ export class PostDateComponent implements OnInit, DoCheck {
         }
       }
     }
-    console.log(returnResult);
     return returnResult;
   }
 }
