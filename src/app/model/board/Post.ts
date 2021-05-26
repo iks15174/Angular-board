@@ -6,5 +6,5 @@ export interface Post{
     content: string;
     user: User;
     watch?: number;
-    created?: Date;
+    created: Date;
 }

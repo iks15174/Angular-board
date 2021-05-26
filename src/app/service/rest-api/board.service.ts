@@ -65,7 +65,10 @@ export class BoardService {
         return this.postList[i];
       }
     }
-    return { postId: -1, title: "", content: "", user: { id: "", password: "", name: "" } };
+    return { postId: -1, title: "", content: "", 
+    user: { id: "", password: "", name: "" },
+    created: new Date(),
+   };
   }
 
   modifyPost(post: Post): boolean {
