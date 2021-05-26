@@ -10,7 +10,7 @@ import { BoardService } from 'src/app/service/rest-api/board.service';
 })
 export class PostDateComponent implements OnInit, DoCheck {
 
-  option: EChartsOption;
+  option: any;
 
   constructor(
     private boardService: BoardService,
@@ -27,11 +27,6 @@ export class PostDateComponent implements OnInit, DoCheck {
       },
       tooltip: {
         trigger: 'axis',
-        formatter: function (params) {
-          params = params[0];
-          var date = new Date(params.name);
-          return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
-        },
         axisPointer: {
           animation: false
         }
@@ -50,13 +45,26 @@ export class PostDateComponent implements OnInit, DoCheck {
         }
       },
       series: [{
-        name: '模拟数据',
+        name: 'series',
         type: 'line',
-        showSymbol: false,
-        hoverAnimation: false,
-        data: data
+        hoverAnimation: true,
+        data: this.makeData(),
       }]
     };
   }
 
+  makeData(){
+    const postList = this.boardService.postList;
+    let result = [];
+    for(let i in postList){
+      result.push(
+        [
+          postList[i].created,
+          postList[i].postId
+        ]
+      );
+    }
+    console.log(result);
+    return result;
+  }
 }
