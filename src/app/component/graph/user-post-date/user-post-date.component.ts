@@ -67,9 +67,14 @@ export class UserPostDateComponent implements OnInit, DoCheck {
 
     for (let i in userList) {
       let dataOfSeries = [];
-      for (let item in dateSet) {
+      for (let item of dateSet) {
         dataOfSeries.push([item, 0]);
       }
+      dataOfSeries.sort(function(a, b){
+        let tempA = new Date(a[0]);
+        let tempB = new Date(b[0]);
+        return tempA.getTime() - tempB.getTime();
+      })
       for (let j in postList) {
         if (postList[j].user.id === userList[i].id) {
           for (let k in dataOfSeries) {
@@ -82,7 +87,7 @@ export class UserPostDateComponent implements OnInit, DoCheck {
       let seriesObject = {
         name: userList[i].name,
         type: 'line',
-        stack: false,
+        stack: true,
         areaStyle: {},
         emphasis: {
           focus: 'series'
@@ -90,7 +95,6 @@ export class UserPostDateComponent implements OnInit, DoCheck {
         data: dataOfSeries
       }
       returnSeries.push(seriesObject);
-      console.log(seriesObject);
     }
     return returnSeries;
   }
