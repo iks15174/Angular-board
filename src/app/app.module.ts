@@ -11,10 +11,6 @@ import { SigninComponent } from './component/member/signin/signin.component';
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import{ HttpClientModule } from "@angular/common/http";
-import { SignService } from "./service/rest-api/sign.service";
-import { UserlistService } from "./service/member/userlist.service";
-import { MyinfoService } from './service/rest-api/myinfo.service';
-import { BoardService } from './service/rest-api/board.service';
 import { SignupComponent } from './component/member/signup/signup.component';
 import { LogoutComponent } from './component/member/logout/logout.component';
 import { MyinfoComponent } from './component/member/myinfo/myinfo.component';
@@ -29,6 +25,12 @@ import { PostUserComponent } from './component/graph/post-user/post-user.compone
 import { UserPerPostComponent } from './component/graph/user-per-post/user-per-post.component';
 import { PostDateComponent } from './component/graph/post-date/post-date.component';
 import { UserPostDateComponent } from './component/graph/user-post-date/user-post-date.component';
+
+import { SignService } from "./service/rest-api/sign.service";
+import { UserlistService } from "./service/member/userlist.service";
+import { MyinfoService } from './service/rest-api/myinfo.service';
+import { BoardService } from './service/rest-api/board.service';
+import { GraphService } from './service/graph/graph.service';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,8 @@ import { UserPostDateComponent } from './component/graph/user-post-date/user-pos
     SignService,
     UserlistService,
     MyinfoService,
-    BoardService
+    BoardService,
+    GraphService
   ],
   bootstrap: [AppComponent]
 })

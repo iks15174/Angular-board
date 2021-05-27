@@ -2,6 +2,7 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import { EChartsOption } from 'echarts';
 import { UserlistService } from 'src/app/service/member/userlist.service';
 import { BoardService } from 'src/app/service/rest-api/board.service';
+import { GraphService } from 'src/app/service/graph/graph.service';
 
 @Component({
   selector: 'app-user-per-post',
@@ -14,7 +15,9 @@ export class UserPerPostComponent implements OnInit, DoCheck {
 
   constructor(
     private boardService: BoardService,
-    private userListService: UserlistService
+    private userListService: UserlistService,
+    private graphService: GraphService
+
   ) { }
 
   ngOnInit(): void {
@@ -39,7 +42,7 @@ export class UserPerPostComponent implements OnInit, DoCheck {
           name: '그래프',
           type: 'pie',
           radius: '50%',
-          data: this.calPostPerUser(),
+          data: this.graphService.makeDataCalPostPerUser(),
           emphasis: {
             itemStyle: {
               shadowBlur: 10,
@@ -51,21 +54,4 @@ export class UserPerPostComponent implements OnInit, DoCheck {
       ]
     }
   }
-
-  calPostPerUser(){
-    const userList= this.userListService.userList;
-    const postList = this.boardService.postList;
-    let result = [];
-    for(let i in userList){
-      let value = 0;
-      for(let j in postList){
-        if(postList[j].user.id === userList[i].id){
-          value++;
-        }
-      }
-      result.push({value: value, name: userList[i].name});
-    }
-    return result;
-  }
-
 }
