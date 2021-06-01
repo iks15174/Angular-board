@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators, Form } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MyinfoService } from 'src/app/service/rest-api/myinfo.service';
 import { SignService } from 'src/app/service/rest-api/sign.service';

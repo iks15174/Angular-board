@@ -31,6 +31,8 @@ import { UserlistService } from "./service/member/userlist.service";
 import { MyinfoService } from './service/rest-api/myinfo.service';
 import { BoardService } from './service/rest-api/board.service';
 import { GraphService } from './service/graph/graph.service';
+import { CommentComponent } from './component/comment/comment.component';
+import { AddcommentComponent } from './component/comment/addcomment.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { GraphService } from './service/graph/graph.service';
     UserPerPostComponent,
     PostDateComponent,
     UserPostDateComponent,
+    CommentComponent,
+    AddcommentComponent,
   ],
   imports: [
     BrowserModule,

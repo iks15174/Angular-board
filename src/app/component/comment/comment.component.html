@@ -1,0 +1,15 @@
+<mat-card *ngFor="let cmt of comments">
+    <mat-card-content>
+        <mat-list class="list-class">
+            <mat-list-item>
+                <mat-icon matListIcon>account_circle</mat-icon>
+                <div matLine>{{cmt.userId}}</div>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon matListIcon>message</mat-icon>
+                <div matLine>{{cmt.content}}</div>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>
+
