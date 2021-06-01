@@ -8,7 +8,9 @@ import { filter } from 'rxjs/operators';
 })
 export class CommentService {
 
-  public cmtList: Comment[]; 
+  private cmtList: Comment[];
+  public cmtList$: Observable<Comment[]>; 
+  
 
   constructor() { 
     this.cmtList = JSON.parse(localStorage.getItem("cmtList") || "[]");
@@ -26,7 +28,7 @@ export class CommentService {
     }
   }
 
-  getCmt(postId: number): Comment[]{
+  getCmt(postId: number): Observable<Comment[]>{
     let result: Comment[] = [];
     const cmtSubject = from(this.cmtList);
     cmtSubject.pipe(
