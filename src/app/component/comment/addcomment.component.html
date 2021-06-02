@@ -1,7 +1,7 @@
 <div class="wrapper">
     <mat-card>
         <mat-card-content>
-          <form [formGroup]="cmtForm" (ngSubmit)="submit()">
+          <form [formGroup]="cmtForm" #form="ngForm" (ngSubmit)="submit(form)">
             <p>
               <mat-form-field>
                 <input type="text" 

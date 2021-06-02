@@ -1,6 +1,5 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { fromEvent } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder, FormGroupDirective } from '@angular/forms';
 import { CommentService } from 'src/app/service/rest-api/comment.service';
 import { MyinfoService } from 'src/app/service/rest-api/myinfo.service';
 import { SignService } from 'src/app/service/rest-api/sign.service';
@@ -43,11 +42,12 @@ export class AddcommentComponent implements OnInit {
     return this.cmtForm.controls;
   }
 
-  submit() {
+  submit(form: FormGroupDirective) {
     if (this.signService.isSignIn() && this.cmtForm.valid) {
       let userId = this.myinfoService.getUser().id;
       this.commentService.addCmt(userId, this.postId_, this.cmtForm.value.content);
-      this.cmtForm.controls['content'].setValue("");
+      form.resetForm();
+      this.cmtForm.reset();
     }
     else {
       alert("로그인이 필요하거나 한 글자 이상 댓글을 써야합니다.");
