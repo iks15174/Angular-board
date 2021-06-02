@@ -4,7 +4,9 @@
           <form [formGroup]="cmtForm" (ngSubmit)="submit()">
             <p>
               <mat-form-field>
-                <input #cmtInput type="text" matInput placeholder="내용" formControlName="content">
+                <input type="text" 
+                (blur)="onBlur()" (focus)="onFocus()"
+                matInput placeholder="내용" formControlName="content">
               </mat-form-field>
             </p>
             <p *ngIf="f.content?.touched && focused &&

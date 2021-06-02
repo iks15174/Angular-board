@@ -54,25 +54,14 @@ export class AddcommentComponent implements OnInit {
     }
   }
 
-  @ViewChild('cmtInput', { static: true }) cmtInput: ElementRef;
-  ngAfterViewInit() {
-    fromEvent(this.cmtInput.nativeElement, 'blur').subscribe(() => {
-      this.focused = false;
-    })
-    fromEvent(this.cmtInput.nativeElement, 'focus').subscribe(() => {
-      this.focused = true;
-    })
-
-  }
-
   ngOnInit(): void {
   }
 
-  ngDoCheck(){
-    console.log("ngDoCheck");
-    console.log(this.focused);
+  onBlur(){
+    this.focused = false;
   }
 
-  
-
+  onFocus(){
+    this.focused = true;
+  }
 }
