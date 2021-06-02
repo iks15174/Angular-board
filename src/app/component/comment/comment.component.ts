@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { number } from 'echarts';
-import { Observable } from 'rxjs';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Observable, fromEvent } from 'rxjs';
 import { Comment } from 'src/app/model/board/Comment';
 import { CommentService } from 'src/app/service/rest-api/comment.service';
 
@@ -11,14 +10,14 @@ import { CommentService } from 'src/app/service/rest-api/comment.service';
 })
 export class CommentComponent implements OnInit {
 
-  postId_: number
+  public postId_: number;
 
   @Input()
-  set postId(value: number){
-    if(value != null){
+  set postId(value: number) {
+    if (value != null) {
       this.postId_ = value;
     }
-    else{
+    else {
       this.postId_ = -1;
     }
   }
@@ -26,19 +25,20 @@ export class CommentComponent implements OnInit {
   comments$: Observable<Comment[]>;
   constructor(
     private commentService: CommentService
-  ) { 
+  ) {
+    this.postId_ = -1;
   }
 
   ngOnInit(): void {
-    this.commentService.cmtModifiyedSignal.subscribe((sign) =>{
-      if(sign==="ADD"){
+    this.commentService.cmtModifiyedSignal.subscribe((sign) => {
+      if (sign === "ADD") {
         this.getCmtObservable();
       }
     });
     this.getCmtObservable();
   }
 
-  getCmtObservable(){
+  getCmtObservable() {
     this.comments$ = this.commentService.getCmt(this.postId_);
   }
 }

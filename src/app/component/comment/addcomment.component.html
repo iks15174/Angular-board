@@ -4,10 +4,10 @@
           <form [formGroup]="cmtForm" (ngSubmit)="submit()">
             <p>
               <mat-form-field>
-                <input type="text" matInput placeholder="내용" formControlName="content">
+                <input #cmtInput type="text" matInput placeholder="내용" formControlName="content">
               </mat-form-field>
             </p>
-            <p *ngIf="f.content?.focused && f.content?.touched && 
+            <p *ngIf="f.content?.touched && focused &&
             f.content?.invalid && f.content?.errors?.required" 
             class="error">
                 Contents is required
