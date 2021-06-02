@@ -1,3 +1,10 @@
+<div class="button">
+    <button mat-stroked-button color="primary" [routerLink]="['/board']">리스트</button>
+    <button mat-raised-button 
+    *ngIf="signService.isSignIn() && loginUser?.name == post?.user?.name"
+    [routerLink]="['/board/post',post?.postId, 'modify']" 
+    color="primary">수정</button>
+</div>
 <mat-card>
     <mat-card-title>글 상세</mat-card-title>
     <mat-card-content>
@@ -19,11 +26,5 @@
         </mat-list>
     </mat-card-content>
 </mat-card>
-<div class="button">
-    <button mat-stroked-button color="primary" [routerLink]="['/board']">리스트</button>
-    <button mat-raised-button 
-    *ngIf="signService.isSignIn() && loginUser?.name == post?.user?.name"
-    [routerLink]="['/board/post',post?.postId, 'modify']" 
-    color="primary">수정</button>
-</div>
+<app-addcomment [postId]="postId"></app-addcomment>
 <app-comment [postId]="postId"></app-comment>

@@ -1,4 +1,4 @@
-<mat-card *ngFor="let cmt of comments">
+<mat-card *ngFor="let cmt of comments$ | async">
     <mat-card-content>
         <mat-list class="list-class">
             <mat-list-item>

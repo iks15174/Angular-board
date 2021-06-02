@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { number } from 'echarts';
+import { Observable } from 'rxjs';
 import { Comment } from 'src/app/model/board/Comment';
 import { CommentService } from 'src/app/service/rest-api/comment.service';
 
@@ -22,14 +23,22 @@ export class CommentComponent implements OnInit {
     }
   }
 
-  comments: Comment[];
+  comments$: Observable<Comment[]>;
   constructor(
     private commentService: CommentService
   ) { 
   }
 
   ngOnInit(): void {
-    this.comments = this.commentService.getCmt(this.postId_);
+    this.commentService.cmtModifiyedSignal.subscribe((sign) =>{
+      if(sign==="ADD"){
+        this.getCmtObservable();
+      }
+    });
+    this.getCmtObservable();
   }
 
+  getCmtObservable(){
+    this.comments$ = this.commentService.getCmt(this.postId_);
+  }
 }

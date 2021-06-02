@@ -1,1 +1,21 @@
-<p>addcomment works!</p>
+<div class="wrapper">
+    <mat-card>
+        <mat-card-content>
+          <form [formGroup]="cmtForm" (ngSubmit)="submit()">
+            <p>
+              <mat-form-field>
+                <input type="text" matInput placeholder="내용" formControlName="content">
+              </mat-form-field>
+            </p>
+            <p *ngIf="f.content?.focused && f.content?.touched && 
+            f.content?.invalid && f.content?.errors?.required" 
+            class="error">
+                Contents is required
+            </p>
+            <div class="button">
+              <button type="submit" mat-stroked-button color="primary" [disabled]="!cmtForm.valid">댓글추가</button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+</div>
