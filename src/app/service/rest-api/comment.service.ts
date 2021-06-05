@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Comment } from 'src/app/model/board/Comment';
 import { Observable, Observer, BehaviorSubject } from 'rxjs';
+import { User } from 'src/app/model/myinfo/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
 
-  public cmtModifiyedSignal: BehaviorSubject<string>; 
+  private cmtList: BehaviorSubject<Comment[]>;
+  public cmtList$: Observable<Comment[]>;
 
   constructor() {
-    if(JSON.parse(localStorage.getItem("cmtList") || "[]").length === 0){
+    if (JSON.parse(localStorage.getItem("cmtList") || "[]").length === 0) {
       let cmtList = [
         {
           cmtId: 0,
@@ -36,25 +38,23 @@ export class CommentService {
       ];
       localStorage.setItem("cmtList", JSON.stringify(cmtList));
     }
-    this.cmtModifiyedSignal = new BehaviorSubject("");
+    this.cmtList = new BehaviorSubject(JSON.parse(localStorage.getItem("cmtList") || "[]"));
+    this.cmtList$ = this.cmtList.asObservable();
   }
 
   getCmt(postId: number) {
     let cmtResult: Comment[] = [];
     let tempResult = JSON.parse(localStorage.getItem('cmtList') || "[]");
-    for(let i = 0; i < tempResult.length; i++){
-      if(tempResult[i].postId === postId){
+    for (let i = 0; i < tempResult.length; i++) {
+      if (tempResult[i].postId === postId) {
         cmtResult.push(tempResult[i]);
       }
     }
-    return new Observable(function(observer: Observer<Comment[]>){
-      observer.next(cmtResult);
-      observer.complete();
-    })
+    this.cmtList.next(cmtResult);
   }
 
-  addCmt(userId: string, postId: number, content: string){
-    let cmtList = JSON.parse(localStorage.getItem('cmtList') || "[]");
+  addCmt(userId: string, postId: number, content: string) {
+    let cmtList: Comment[] = JSON.parse(localStorage.getItem('cmtList') || "[]");
     let newCmt: Comment = {
       cmtId: (cmtList[cmtList.length - 1].cmtId + 1),
       postId: postId,
@@ -64,10 +64,19 @@ export class CommentService {
     };
     cmtList.push(newCmt);
     localStorage.setItem("cmtList", JSON.stringify(cmtList));
-    this.cmtModifiyedSignal.next('ADD');
+    this.cmtList.next(cmtList);
   }
 
   modifyCmt() { }
 
-  deleteCmt() { }
+  deleteCmt(cmtId: number, user: User) {
+    let cmtList: Comment[] = JSON.parse(localStorage.getItem('cmtList') || "[]");
+    for(let i in cmtList){
+      if(cmtList[i].cmtId === cmtId && cmtList[i].userId === user.id){
+        cmtList.splice(Number(i), 1);
+        localStorage.setItem('cmtList', JSON.stringify(cmtList));
+        return 
+      }
+    }
+  }
 }

@@ -30,15 +30,7 @@ export class CommentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.commentService.cmtModifiyedSignal.subscribe((sign) => {
-      if (sign === "ADD") {
-        this.getCmtObservable();
-      }
-    });
-    this.getCmtObservable();
-  }
-
-  getCmtObservable() {
-    this.comments$ = this.commentService.getCmt(this.postId_);
+    this.commentService.getCmt(this.postId_);
+    this.comments$ = this.commentService.cmtList$;
   }
 }
