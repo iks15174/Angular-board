@@ -10,10 +10,13 @@
                 <div matLine>{{cmt.content}}</div>
             </mat-list-item>
         </mat-list>
-        <button mat-raised-button 
-        color="primary">수정</button>
-        <button mat-raised-button 
-        color="primary">삭제</button>
+        <mat-icon class="icon" 
+        *ngIf="signService.isSignIn() && loginUser?.id == cmt?.userId">
+        edit
+        </mat-icon>
+        <mat-icon class="icon" 
+        *ngIf="signService.isSignIn() && loginUser?.id == cmt?.userId"
+        (click)="delete(cmt.cmtId)">
+        delete_forever</mat-icon>
     </mat-card-content>
 </mat-card>
-
