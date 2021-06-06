@@ -1,0 +1,8 @@
+Angular의 모듈들에 대해서
+
+1. 컴포넌트는 하나의 모듈에만 등록(declartion)할 수 있으며, 다른 모듈에서 사용하기 위해서는 
+컴포넌트를 export하고 다른 모듈에서 컴포넌트가 들어있는 모듈을 import 해줘야 한다.
+
+2. 모듈에서 다른 모듈 import. App module에서 import한 것들은 하위의 module 들에게
+전달되지 않는다. 공통적으로 import 해야하는 module 들은 shared module를 만들고 그 
+shared module을 import 하여 사용하도록 한다.
