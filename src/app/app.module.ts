@@ -7,13 +7,9 @@ import { MaterialModule } from "./modules/meterial/meterial.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { HomeComponent } from './component/home/home.component';
-import { SigninComponent } from './component/member/signin/signin.component';
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import{ HttpClientModule } from "@angular/common/http";
-import { SignupComponent } from './component/member/signup/signup.component';
-import { LogoutComponent } from './component/member/logout/logout.component';
-import { MyinfoComponent } from './component/member/myinfo/myinfo.component';
 import { BoardComponent } from './component/board/Board/board.component';
 import { AddpostComponent } from './component/board/AddPost/addpost.component';
 import { PostViewComponent } from './component/board/PostView/post-view.component';
@@ -21,10 +17,10 @@ import { PostModifyComponent } from './component/board/PostModify/post-modify.co
 
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
-import { PostUserComponent } from './component/graph/post-user/post-user.component';
-import { UserPerPostComponent } from './component/graph/user-per-post/user-per-post.component';
-import { PostDateComponent } from './component/graph/post-date/post-date.component';
-import { UserPostDateComponent } from './component/graph/user-post-date/user-post-date.component';
+import { PostUserComponent } from './component/home/graph/post-user/post-user.component';
+import { UserPerPostComponent } from './component/home/graph/user-per-post/user-per-post.component';
+import { PostDateComponent } from './component/home/graph/post-date/post-date.component';
+import { UserPostDateComponent } from './component/home/graph/user-post-date/user-post-date.component';
 
 import { SignService } from "./service/rest-api/sign.service";
 import { UserlistService } from "./service/member/userlist.service";
@@ -38,11 +34,6 @@ import { AddcommentComponent } from './component/comment/AddComment/addcomment.c
   declarations: [
     AppComponent,
     HomeComponent,
-    SigninComponent,
-    SignupComponent,
-    SignupComponent,
-    LogoutComponent,
-    MyinfoComponent,
     BoardComponent,
     AddpostComponent,
     PostViewComponent,
