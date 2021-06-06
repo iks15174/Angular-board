@@ -10,10 +10,6 @@ import { HomeComponent } from './component/home/home.component';
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import{ HttpClientModule } from "@angular/common/http";
-import { BoardComponent } from './component/board/Board/board.component';
-import { AddpostComponent } from './component/board/AddPost/addpost.component';
-import { PostViewComponent } from './component/board/PostView/post-view.component';
-import { PostModifyComponent } from './component/board/PostModify/post-modify.component';
 
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -27,23 +23,15 @@ import { UserlistService } from "./service/member/userlist.service";
 import { MyinfoService } from './service/rest-api/myinfo.service';
 import { BoardService } from './service/rest-api/board.service';
 import { GraphService } from './service/graph/graph.service';
-import { CommentComponent } from './component/comment/Comment/comment.component';
-import { AddcommentComponent } from './component/comment/AddComment/addcomment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    BoardComponent,
-    AddpostComponent,
-    PostViewComponent,
-    PostModifyComponent,
     PostUserComponent,
     UserPerPostComponent,
     PostDateComponent,
     UserPostDateComponent,
-    CommentComponent,
-    AddcommentComponent,
   ],
   imports: [
     BrowserModule,
