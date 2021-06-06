@@ -17,6 +17,7 @@
         <mat-icon class="icon" 
         *ngIf="signService.isSignIn() && loginUser?.id == cmt?.userId"
         (click)="delete(cmt.cmtId)">
-        delete_forever</mat-icon>
+        delete_forever
+        </mat-icon>
     </mat-card-content>
 </mat-card>

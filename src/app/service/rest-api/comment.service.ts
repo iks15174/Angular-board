@@ -41,7 +41,16 @@ export class CommentService {
     this.getCmt(postId);
   }
 
-  modifyCmt() { }
+  modifyCmt(cmt: Comment, postId: number) {
+    let cmtList: Comment[] = JSON.parse(localStorage.getItem('cmtList') || "[]");
+    for(let i in cmtList){
+      if(cmtList[i].cmtId === cmt.cmtId){
+        cmtList[i].content = cmt.content;
+      }
+    }
+    localStorage.setItem('cmtList', JSON.stringify(cmtList));
+    this.getCmt(postId);
+  }
 
   deleteCmt(postId: number, cmtId: number, user: User) {
     let cmtList: Comment[] = JSON.parse(localStorage.getItem('cmtList') || "[]");
