@@ -13,15 +13,24 @@ export class UserlistService {
 
   constructor() {
     this.userList = JSON.parse(localStorage.getItem("userList") || "[]");
-    if(this.userList.length == 0){
-      this.userList.push({id: "admin@naver.com", password: "1234", name: "jiho"});
+    if (this.userList.length == 0) {
+      this.userList.push({ id: "admin@naver.com", password: "1234", name: "jiho" });
       localStorage.setItem("userList", JSON.stringify(this.userList));
     }
   }
 
-  addUser(user: User): boolean{
-    for(let i = 0; i < this.userList.length; i++){
-      if(this.userList[i].id === user.id || this.userList[i].name === user.name){
+  findUser(user: User): boolean {
+    for (let i = 0; i < this.userList.length; i++) {
+      if (this.userList[i].id === user.id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  addUser(user: User): boolean {
+    for (let i = 0; i < this.userList.length; i++) {
+      if (this.userList[i].id === user.id || this.userList[i].name === user.name) {
         return false;
       }
     }
@@ -30,11 +39,11 @@ export class UserlistService {
     return true;
   }
 
-  addRandomUser(){
+  addRandomUser() {
     const id_num = this.userList.length;
     const id = id_num + this.baseEmail;
     const name = id_num + this.baseName;
-    this.userList.push({id: id, password: this.basePsw, name: name});
+    this.userList.push({ id: id, password: this.basePsw, name: name });
     localStorage.setItem("userList", JSON.stringify(this.userList));
   }
 }

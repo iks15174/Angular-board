@@ -44,7 +44,7 @@ export class BoardService {
   }
 
   addPost(title: string, content: string, user: User): boolean {
-    if (user.id !== "") {
+    if (this.userlistService.findUser(user)) {
       let newPost: Post = {
         postId: (this.postList[this.postList.length - 1].postId + 1),
         title: title,
