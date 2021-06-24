@@ -13,12 +13,8 @@
                 <textarea matInput placeholder="내용" formControlName="content" rows="5"></textarea>
               </mat-form-field>
             </p>
-            <p *ngIf="f.title?.touched && f.title?.invalid && f.title?.errors?.required" class="error">
-                Title is required
-            </p>
-            <p *ngIf="f.content?.touched && f.content?.invalid && f.content?.errors?.required" class="error">
-                Contents is required
-            </p>
+            <p id="title-error" *ngIf="f.title?.touched && f.title?.invalid && f.title?.errors?.required" class="error">Title is required</p>
+            <p id="content-error" *ngIf="f.content?.touched && f.content?.invalid && f.content?.errors?.required" class="error">Contents is required</p>
             <div class="button">
               <button type="submit" mat-stroked-button color="primary" [disabled]="!postForm.valid">등록</button>
             </div>
