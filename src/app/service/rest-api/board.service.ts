@@ -71,11 +71,11 @@ export class BoardService {
    };
   }
 
-  modifyPost(post: Post): boolean {
+  modifyPost(postId: number, title: string, content: string, user: User): boolean {
     for (let i in this.postList) {
-      if (this.postList[i].postId === post.postId) {
-        this.postList[i].title = post.title;
-        this.postList[i].content = post.content;
+      if (this.postList[i].postId === postId && this.postList[i].user.id === user.id) {
+        this.postList[i].title = title;
+        this.postList[i].content = content;
         localStorage.setItem("postList", JSON.stringify(this.postList));
         return true;
       }

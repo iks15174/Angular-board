@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BoardService } from 'src/app/service/rest-api/board.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { MyinfoService } from 'src/app/service/rest-api/myinfo.service';
 
 @Component({
   selector: 'app-post-modify',
@@ -20,7 +21,8 @@ export class PostModifyComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private boardService: BoardService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private myinfoService: MyinfoService
   ) { 
     this.postId = Number(this.route.snapshot.params['postId']);
     this.postForm = this.formBuilder.group({
@@ -40,9 +42,7 @@ export class PostModifyComponent implements OnInit {
   }
 
   submit(){
-    this.post.title = this.postForm.value.title;
-    this.post.content = this.postForm.value.content;
-    if(this.boardService.modifyPost(this.post)){
+    if(this.boardService.modifyPost(this.post.postId, this.postForm.value.title, this.postForm.value.content, this.myinfoService.getUser())){
       this.router.navigate(['/board/post/' + this.post.postId]);
     }
   }

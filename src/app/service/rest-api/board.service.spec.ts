@@ -10,7 +10,7 @@ class MockUserListService {
         this.userList = [];
         this.userList.push({ id: "test", name: "test", password: "1234" });
     }
-    
+
     findUser(user: User): boolean {
         for (let i = 0; i < this.userList.length; i++) {
             if (this.userList[i].id === user.id) {
@@ -51,15 +51,23 @@ describe('BoardService', () => {
         expect(boardService.addPost("test", "test", testUser)).toBeFalsy();
     })
 
-    // it("BoardService post should be modifyed by owner", () => {
+    it("BoardService post should be modifyed by owner", () => {
+        let testUser: User = { id: "admin@naver.com", name: "jiho", password: "1234"};
+        expect(boardService.modifyPost(1, "test", "test", testUser)).toBeTruthy();
+        testUser = {id: "test", name: "test", password: "1234"};
+        expect(boardService.modifyPost(1, "test", "test", testUser)).toBeFalsy();
+    })
 
-    // })
+    it("BoardService post should be deleted by owner", () => {
+        let testUser: User = {id: "test", name: "test", password: "1234"};
+        expect(boardService.deletePost(1, testUser)).toBeFalsy();
+        testUser = { id: "admin@naver.com", name: "jiho", password: "1234"};
+        expect(boardService.deletePost(1, testUser)).toBeTruthy();
+    })
 
-    // it("BoardService post should be deleted by owner", () => {
-
-    // })
-
-    // it("BoardService should delete post that exist", () => {
-
-    // })
+    it("BoardService should delete post that exist", () => {
+        let testUser: User = {id: "admin@naver.com", name: "jiho", password: "1234"};
+        expect(boardService.deletePost(2, testUser)).toBeFalsy();
+        expect(boardService.deletePost(1, testUser)).toBeTruthy();
+    })
 });
